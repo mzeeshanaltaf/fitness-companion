@@ -17,7 +17,8 @@ Whether you're just starting out or leveling up your fitness journey, NutriFit h
 transformation today! 🌟
 
 # Application Link
-    -
+
+https://nutri-fit.streamlit.app/
 
 # Technologies Used
 * Streamlit -- Front end development
@@ -39,3 +40,4 @@ You must have Python 3.11 or later installed.
 ![img.png](screenshots/img.png)
 ![img_1.png](screenshots/img_1.png)
 ![img_2.png](screenshots/img_2.png)
+![img_3.png](screenshots/img_3.png)
