@@ -53,20 +53,25 @@ button = st.button("Generate Plan", type='primary', icon=":material/fitness_cent
 
 if button:
     with st.spinner('Processing ...', show_time=True):
+        cal_macro_req, workout_routine, tips = langflow_fitness_plan_generator(st.session_state.user_profile,
+                                                                                fitness_goal,
+                                                                                notes)
         st.subheader('Calories & Macronutrients🌾🥩🥑:', divider='gray')
-        calories = 2500
-        carbs = 300
-        protein = 150
-        fat = 70
         col1, col2, col3, col4 = st.columns(4, border=True)
         with col1:
-            st.metric('Calories', f'{calories:,}')
+            st.metric('Calories', f'{int(cal_macro_req['daily_calories'].split()[0]):,}') # Exclude units and convert the number string to int
         with col2:
-            st.metric('Carbs🌾', f'{carbs}g')
+            st.metric('Carbs🌾', f'{int(cal_macro_req['carbs'].split()[0])}g')
         with col3:
-            st.metric('Protein🥩', f'{protein}g')
+            st.metric('Protein🥩', f'{int(cal_macro_req['protein'].split()[0])}g')
         with col4:
-            st.metric('Fat🥑', f'{fat}g')
+            st.metric('Fat🥑', f'{int(cal_macro_req['fat'].split()[0])}g')
+
+        st.subheader('Weekly Workout Routine:🏋️', divider='gray')
+        display_workout_routine(workout_routine)
+        st.subheader('Additional Tips:🏋📝', divider='gray')
+        display_tips(tips)
+
 
 
 
