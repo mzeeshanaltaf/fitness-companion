@@ -2,4 +2,3 @@ streamlit
 email-validator
 captcha
 requests
-json
