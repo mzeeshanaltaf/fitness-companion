@@ -31,7 +31,6 @@ Whether you're just starting out or leveling up your fitness journey, NutriFit h
 # Display footer in the sidebar
 display_footer()
 
-st.subheader('Configuration:')
 col1, col2, col3 = st.columns([0.3, 0.3, 0.4], border=True)
 with col1:
     st.subheader('User Profile:🧑‍💻', divider='gray')
@@ -48,8 +47,10 @@ with col3:
     notes = st.text_input('Notes', value=None, placeholder='Any medical condition or notes', max_chars=200,
                           label_visibility="collapsed")
 
+if st.session_state.user_profile is None:
+    st.info('Please set User profile', icon=":material/info:")
 
-button = st.button("Generate Plan", type='primary', icon=":material/fitness_center:")
+button = st.button("Generate Plan", type='primary', icon=":material/fitness_center:", disabled=not st.session_state.user_profile)
 
 if button:
     with st.spinner('Processing ...', show_time=True):

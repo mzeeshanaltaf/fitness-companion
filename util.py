@@ -113,7 +113,7 @@ def display_tips(tips):
     st.markdown(bullet_points)
 
 def display_motivational_quote(quote):
-    st.success("***" + quote + "***")
+    st.success("***" + quote + "***", icon=":material/mountain_flag:")
 
 def display_footer():
     footer = """
