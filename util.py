@@ -73,8 +73,9 @@ def langflow_fitness_plan_generator(user_profile, fitness_goal, notes):
         calorie_macronutrient_requirements = result['calorie_macronutrient_requirements']
         daily_workout_routine = result['daily_workout_routine']
         additional_notes = result['additional_notes']
+        motivational_quote = result['motivational_quote']
 
-        return calorie_macronutrient_requirements, daily_workout_routine, additional_notes
+        return calorie_macronutrient_requirements, daily_workout_routine, additional_notes, motivational_quote
 
     except requests.exceptions.RequestException as e:
         st.exception(f"Error making API request: {e}")
@@ -110,6 +111,9 @@ def display_tips(tips):
     # Convert dictionary values to bullet points
     bullet_points = "\n".join([f"* {value.title()}" for value in tips.values()])
     st.markdown(bullet_points)
+
+def display_motivational_quote(quote):
+    st.success("***" + quote + "***")
 
 def display_footer():
     footer = """

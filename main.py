@@ -53,7 +53,7 @@ button = st.button("Generate Plan", type='primary', icon=":material/fitness_cent
 
 if button:
     with st.spinner('Processing ...', show_time=True):
-        cal_macro_req, workout_routine, tips = langflow_fitness_plan_generator(st.session_state.user_profile,
+        cal_macro_req, workout_routine, tips, quote = langflow_fitness_plan_generator(st.session_state.user_profile,
                                                                                 fitness_goal,
                                                                                 notes)
         st.subheader('Calories & Macronutrients🌾🥩🥑:', divider='gray')
@@ -69,8 +69,10 @@ if button:
 
         st.subheader('Weekly Workout Routine:🏋️', divider='gray')
         display_workout_routine(workout_routine)
-        st.subheader('Additional Tips:🏋📝', divider='gray')
+        st.subheader('Additional Tips:📝', divider='gray')
         display_tips(tips)
+        st.subheader('Motivational Quote:🌟', divider='gray')
+        display_motivational_quote(quote)
 
 
 
